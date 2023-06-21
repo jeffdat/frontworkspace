@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    
+    <h1>Practice</h1>
+
+    <h2>Event 1</h2>
+
+    <select name="number">
+        <option value="">== 선택 ==</option>
+        <option value="1">1번</option>
+        <option value="2">2번</option>
+        <option value="3">3번</option>
+        <option value="4">4번</option>
+    </select>
+    <span id="selNum"></span>
+
+    <hr>
+
+    <script>
+        $(function(){
+            $("select").change(function(){
+                $("#selNum").html($("option:selected").html());
+            });
+        });
+    </script>
+
+
+    <h2>Event 2</h2>
+
+    <table id="event2" border="1">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>조회수</th>
+            <th>작성일자</th>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3번제목</td>
+            <td>0</td>
+            <td>23-05-19</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2번제목</td>
+            <td>55</td>
+            <td>23-05-18</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1번제목</td>
+            <td>100</td>
+            <td>02-05-18</td>
+        </tr>
+    </table>
+
+    선택된 행 : <span id="s1"></span> /
+                <span id="s2"></span> /
+                <span id="s3"></span> /
+                <span id="s4"></span>
+    <hr>
+
+    <script>
+        $(function(){
+            $("#event2 tr").click(function(){
+                
+                if($(this).children().is("td")){
+
+                    $(this).siblings().css("backgroundColor","white");
+                    $(this).css("backgroundColor","red");
+
+                    const arr = $(this).children();
+
+                    $.each(arr, function(index,item){
+                        $("#s"+(index+1)).html($(item).html());
+                    });
+                }
+
+            });
+        });
+    </script>
+</body>
+</html>
